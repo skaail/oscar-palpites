@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import './picks.css'
+import { collection, addDoc } from "firebase/firestore";
+import {db} from '../firebase';
 
 const Picks = () => {
   const [categories, setCategories] = useState([
@@ -32,13 +35,18 @@ const Picks = () => {
 
   const [bets, setBets] = useState({});
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(bets)
+    try {
+      const docRef = await addDoc(collection(db, "palpites"), {
+        bets: bets
+      });
+    } catch (e) {
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='formCentral' onSubmit={handleSubmit}>
       {categories.map(({ name, nominees }) => (
         <div key={name}>
           <h2>{name}</h2>
