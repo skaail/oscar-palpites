@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
@@ -8,9 +7,11 @@ import Picks from './pages/Picks';
 import Ranking from './pages/Ranking';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import useToken from './components/useToken';
 
 function App() {
-  const [token, setToken] = useState();
+  
+  const { token, setToken} = useToken()
 
   if(!token) {
     return <Login setToken={setToken} />
