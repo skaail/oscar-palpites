@@ -5,9 +5,12 @@ import Home from './pages/Home';
 import Perfil from './pages/Perfil';
 import Picks from './pages/Picks';
 import Ranking from './pages/Ranking';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
+    <>
+    <Navbar />
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />}/>
@@ -16,6 +19,7 @@ function App() {
         <Route path='/ranking' element={<Ranking />}/>
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 
