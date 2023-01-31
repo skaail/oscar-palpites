@@ -1,12 +1,13 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+var randomToken = require('random-token');
 
 app.use(cors())
 
 app.use('/login', (req, res) => {
     res.send({
-        token: 'test123',
+        token: randomToken(16),
         teste: req.body
     })
 })
